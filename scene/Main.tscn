@@ -1,0 +1,165 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://asset/ui/sky.png" type="Texture" id=1]
+[ext_resource path="res://asset/ui/ground_grass.png" type="Texture" id=2]
+[ext_resource path="res://scene/object/Camera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://asset/ui/bg_house.png" type="Texture" id=4]
+[ext_resource path="res://asset/ui/bg_greenhouse.png" type="Texture" id=5]
+[ext_resource path="res://asset/ui/bg_backyard.png" type="Texture" id=6]
+[ext_resource path="res://asset/ui/bg_market.png" type="Texture" id=7]
+[ext_resource path="res://asset/character/player.png" type="Texture" id=8]
+[ext_resource path="res://script/Main.gd" type="Script" id=9]
+[ext_resource path="res://script/Player.gd" type="Script" id=10]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 60.8601
+height = 135.796
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Sky" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_right = 3286.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="Control" parent="."]
+anchor_left = 0.125
+anchor_top = 0.534
+anchor_right = 5.362
+anchor_bottom = 0.534
+margin_top = -460.52
+margin_right = 0.359619
+margin_bottom = 5.47998
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="bg_home" type="TextureRect" parent="bg"]
+anchor_top = 1.032
+anchor_right = 0.139
+anchor_bottom = 1.032
+margin_top = -480.912
+margin_right = -1.16907
+margin_bottom = 0.0879822
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D" type="Position2D" parent="bg/bg_home"]
+position = Vector2( 315.339, 470.412 )
+scale = Vector2( 0.434473, 0.434473 )
+
+[node name="bg_greenhouse" type="TextureRect" parent="bg"]
+anchor_left = 0.199
+anchor_top = 1.032
+anchor_right = 0.321
+anchor_bottom = 1.032
+margin_left = 1.57092
+margin_top = -382.912
+margin_right = -1.49109
+margin_bottom = 0.0879822
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D" type="Position2D" parent="bg/bg_greenhouse"]
+visible = false
+position = Vector2( 230.76, 371.223 )
+scale = Vector2( 0.434473, 0.434473 )
+
+[node name="bg_yard" type="TextureRect" parent="bg"]
+anchor_left = 0.387
+anchor_top = 1.0
+anchor_right = 0.511
+anchor_bottom = 1.0
+margin_left = 0.622925
+margin_top = -230.0
+margin_right = 0.0187988
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D" type="Position2D" parent="bg/bg_yard"]
+visible = false
+position = Vector2( 226.89, 231.335 )
+scale = Vector2( 0.434473, 0.434473 )
+
+[node name="bg_market" type="TextureRect" parent="bg"]
+anchor_left = 0.575
+anchor_top = 1.0
+anchor_right = 0.703
+anchor_bottom = 1.0
+margin_left = 1.6748
+margin_top = -465.0
+margin_right = -1.01294
+margin_bottom = 20.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D" type="Position2D" parent="bg/bg_market"]
+visible = false
+position = Vector2( 249.336, 471.998 )
+scale = Vector2( 0.434473, 0.434473 )
+
+[node name="Ground" type="TextureRect" parent="."]
+anchor_top = 0.477
+anchor_right = 5.581
+anchor_bottom = 0.477
+margin_left = -8.0
+margin_top = 0.440002
+margin_right = -0.319824
+margin_bottom = 671.44
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 405.252, 693.881 )
+motion/sync_to_physics = true
+script = ExtResource( 10 )
+
+[node name="Camera2D" parent="Player" instance=ExtResource( 3 )]
+position = Vector2( -45.1756, -53.158 )
+current = true
+smoothing_speed = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( -0.228012, 3.32007 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Player"]
+position = Vector2( -0.629944, 0.381958 )
+scale = Vector2( 0.434473, 0.434473 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}

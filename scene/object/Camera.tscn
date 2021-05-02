@@ -1,0 +1,307 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://asset/button/btn_setting.png" type="Texture" id=1]
+[ext_resource path="res://asset/button/btn_home.png" type="Texture" id=2]
+[ext_resource path="res://asset/button/btn_home_press.png" type="Texture" id=3]
+[ext_resource path="res://asset/button/btn_greenhouse.png" type="Texture" id=4]
+[ext_resource path="res://asset/button/btn_backyard.png" type="Texture" id=5]
+[ext_resource path="res://asset/button/btn_backyard_press.png" type="Texture" id=6]
+[ext_resource path="res://asset/button/btn_more.png" type="Texture" id=7]
+[ext_resource path="res://asset/slide_left_disabled.png" type="Texture" id=8]
+[ext_resource path="res://asset/button/btn_more_press.png" type="Texture" id=9]
+[ext_resource path="res://asset/slide_left_press.png" type="Texture" id=10]
+[ext_resource path="res://asset/button/btn_setting_press.png" type="Texture" id=11]
+[ext_resource path="res://asset/button/btn_greenhouse_press.png" type="Texture" id=12]
+[ext_resource path="res://asset/slide_left.png" type="Texture" id=13]
+[ext_resource path="res://asset/slide_right_press.png" type="Texture" id=14]
+[ext_resource path="res://asset/slide_right.png" type="Texture" id=15]
+[ext_resource path="res://asset/slide_right_disabled.png" type="Texture" id=16]
+[ext_resource path="res://asset/font/VarelaRound-Regular.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://asset/button/btn_market.png" type="Texture" id=18]
+[ext_resource path="res://asset/button/btn_market_press.png" type="Texture" id=19]
+[ext_resource path="res://asset/button/btn_primary.png" type="Texture" id=20]
+[ext_resource path="res://asset/button/btn_primary_pressed.png" type="Texture" id=21]
+[ext_resource path="res://template/text-title-lg-outline.tres" type="DynamicFont" id=22]
+[ext_resource path="res://asset/button/btn_secondary_pressed.png" type="Texture" id=23]
+[ext_resource path="res://asset/button/btn_secondary.png" type="Texture" id=24]
+[ext_resource path="res://script/Camera.gd" type="Script" id=25]
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+outline_size = 4
+outline_color = Color( 0.356863, 0.180392, 0.105882, 1 )
+extra_spacing_bottom = -3
+extra_spacing_space = -1
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+outline_size = 4
+outline_color = Color( 0.180392, 0.305882, 0.470588, 1 )
+extra_spacing_bottom = -3
+extra_spacing_space = -1
+font_data = ExtResource( 17 )
+
+[node name="Camera" type="Camera2D"]
+position = Vector2( 363.076, 640.723 )
+script = ExtResource( 25 )
+
+[node name="bg_nav_foot" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -370.0
+margin_top = 489.0
+margin_right = 360.0
+margin_bottom = 1000.0
+color = Color( 0.870588, 0.941176, 0.933333, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="nav_foot" type="VBoxContainer" parent="bg_nav_foot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 17.0
+margin_right = -1.0
+margin_bottom = -136.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="bg_nav_foot/nav_foot"]
+margin_right = 729.0
+margin_bottom = 122.0
+custom_constants/separation = 30
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_home" type="TextureButton" parent="bg_nav_foot/nav_foot/HBoxContainer" groups=[
+"menu_btn",
+]]
+margin_left = 25.0
+margin_right = 137.0
+margin_bottom = 122.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+
+[node name="btn_greenhouse" type="TextureButton" parent="bg_nav_foot/nav_foot/HBoxContainer" groups=[
+"menu_btn",
+]]
+margin_left = 167.0
+margin_right = 279.0
+margin_bottom = 122.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 12 )
+
+[node name="btn_yard" type="TextureButton" parent="bg_nav_foot/nav_foot/HBoxContainer" groups=[
+"menu_btn",
+]]
+margin_left = 309.0
+margin_right = 420.0
+margin_bottom = 122.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+
+[node name="btn_market" type="TextureButton" parent="bg_nav_foot/nav_foot/HBoxContainer" groups=[
+"menu_btn",
+]]
+margin_left = 450.0
+margin_right = 562.0
+margin_bottom = 122.0
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 19 )
+
+[node name="btn_more" type="TextureButton" parent="bg_nav_foot/nav_foot/HBoxContainer" groups=[
+"menu_btn",
+]]
+margin_left = 592.0
+margin_right = 703.0
+margin_bottom = 122.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 9 )
+
+[node name="bg_nav_head" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -366.0
+margin_top = -649.0
+margin_right = 359.0
+margin_bottom = -482.0
+color = Color( 0.870588, 0.941176, 0.933333, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PageName" type="Label" parent="bg_nav_head"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -155.0
+margin_top = -22.5
+margin_right = 155.0
+margin_bottom = 22.5
+custom_fonts/font = ExtResource( 22 )
+text = "%MENU_NAME%"
+align = 1
+autowrap = true
+uppercase = true
+max_lines_visible = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_setting" type="TextureButton" parent="bg_nav_head" groups=[
+"menu_btn",
+]]
+margin_left = 592.0
+margin_top = 25.0
+margin_right = 703.0
+margin_bottom = 167.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -310.5
+margin_top = -20.0
+margin_right = 310.5
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ctrl_left" type="TextureButton" parent="control" groups=[
+"control_btn",
+]]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -49.0
+margin_right = 60.0
+margin_bottom = 49.0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 10 )
+texture_disabled = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ctrl_right" type="TextureButton" parent="control" groups=[
+"control_btn",
+]]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -49.0
+margin_bottom = 49.0
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 14 )
+texture_disabled = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="action" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -310.0
+margin_top = 310.0
+margin_right = 311.0
+margin_bottom = 408.0
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_primary" type="TextureButton" parent="action" groups=[
+"action_btn",
+]]
+margin_left = 29.0
+margin_right = 300.0
+margin_bottom = 99.0
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 21 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="action/btn_primary"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.5
+margin_top = -48.5
+margin_right = 124.5
+margin_bottom = 49.5
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -10
+text = "%text%"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+max_lines_visible = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="btn_secondary" type="TextureButton" parent="action" groups=[
+"action_btn",
+]]
+margin_left = 320.0
+margin_right = 591.0
+margin_bottom = 99.0
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 23 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="action/btn_secondary"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -124.5
+margin_top = -48.5
+margin_right = 125.5
+margin_bottom = 49.5
+custom_fonts/font = SubResource( 2 )
+custom_constants/line_spacing = -10
+text = "%text%"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+max_lines_visible = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
