@@ -63,6 +63,7 @@ func _trigger_signal_press(data):
 					print("Masuk rumah")
 				'rumah kaca':
 					print('Masuk rumah kaca')
+					_change_page(menuPath+'menu/GreenHouse.tscn', 0, 'wipe-In')
 				'kebun belakang':
 					if isPrimary:
 						print("Masuk Kebun Saya")
