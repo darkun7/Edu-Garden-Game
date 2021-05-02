@@ -1,21 +1,18 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://asset/ui/sky.png" type="Texture" id=1]
-[ext_resource path="res://asset/ui/ground_grass.png" type="Texture" id=2]
+[ext_resource path="res://asset/ui/market_wallpaper.png" type="Texture" id=1]
+[ext_resource path="res://asset/ui/ground_floor_market.png" type="Texture" id=2]
 [ext_resource path="res://scene/object/Camera.tscn" type="PackedScene" id=3]
-[ext_resource path="res://asset/ui/bg_house.png" type="Texture" id=4]
-[ext_resource path="res://asset/ui/bg_greenhouse.png" type="Texture" id=5]
-[ext_resource path="res://asset/ui/bg_backyard.png" type="Texture" id=6]
-[ext_resource path="res://asset/ui/bg_market.png" type="Texture" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://asset/character/player.png" type="Texture" id=8]
-[ext_resource path="res://script/Main.gd" type="Script" id=9]
+[ext_resource path="res://script/Market.gd" type="Script" id=9]
 [ext_resource path="res://script/Player.gd" type="Script" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 60.8601
 height = 135.796
 
-[node name="Main" type="Control"]
+[node name="Market" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 9 )
@@ -24,15 +21,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sky" type="TextureRect" parent="."]
-visible = false
+[node name="Wallpaper" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -8.0
 margin_right = 3286.0
 texture = ExtResource( 1 )
 expand = true
-stretch_mode = 1
+stretch_mode = 2
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -51,7 +47,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg_home" type="TextureRect" parent="bg"]
+[node name="bg_seed" type="TextureRect" parent="bg"]
 anchor_top = 1.032
 anchor_right = 0.139
 anchor_bottom = 1.032
@@ -64,12 +60,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Position2D" type="Position2D" parent="bg/bg_home"]
+[node name="Position2D" type="Position2D" parent="bg/bg_seed"]
 visible = false
 position = Vector2( 315.339, 470.412 )
 scale = Vector2( 0.434473, 0.434473 )
 
-[node name="bg_greenhouse" type="TextureRect" parent="bg"]
+[node name="bg_flashsale" type="TextureRect" parent="bg"]
 anchor_left = 0.199
 anchor_top = 1.032
 anchor_right = 0.321
@@ -78,17 +74,17 @@ margin_left = 29.1171
 margin_top = -382.912
 margin_right = 26.0551
 margin_bottom = 0.0879822
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Position2D" type="Position2D" parent="bg/bg_greenhouse"]
+[node name="Position2D" type="Position2D" parent="bg/bg_flashsale"]
 visible = false
 position = Vector2( 230.76, 371.223 )
 scale = Vector2( 0.434473, 0.434473 )
 
-[node name="bg_yard" type="TextureRect" parent="bg"]
+[node name="bg_tool" type="TextureRect" parent="bg"]
 anchor_left = 0.387
 anchor_top = 1.0
 anchor_right = 0.511
@@ -97,17 +93,17 @@ margin_left = 27.0814
 margin_top = -237.56
 margin_right = 26.4775
 margin_bottom = -7.55957
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Position2D" type="Position2D" parent="bg/bg_yard"]
+[node name="Position2D" type="Position2D" parent="bg/bg_tool"]
 visible = false
 position = Vector2( 226.89, 231.335 )
 scale = Vector2( 0.434473, 0.434473 )
 
-[node name="bg_market" type="TextureRect" parent="bg"]
+[node name="bg_dummy" type="TextureRect" parent="bg"]
 anchor_left = 0.575
 anchor_top = 1.0
 anchor_right = 0.703
@@ -116,12 +112,12 @@ margin_left = 49.7832
 margin_top = -466.782
 margin_right = 47.0955
 margin_bottom = 18.2182
-texture = ExtResource( 7 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Position2D" type="Position2D" parent="bg/bg_market"]
+[node name="Position2D" type="Position2D" parent="bg/bg_dummy"]
 visible = false
 position = Vector2( 249.336, 471.998 )
 scale = Vector2( 0.434473, 0.434473 )

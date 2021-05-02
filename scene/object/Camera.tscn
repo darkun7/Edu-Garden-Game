@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://asset/button/btn_setting.png" type="Texture" id=1]
 [ext_resource path="res://asset/button/btn_home.png" type="Texture" id=2]
@@ -25,6 +25,12 @@
 [ext_resource path="res://asset/button/btn_secondary_pressed.png" type="Texture" id=23]
 [ext_resource path="res://asset/button/btn_secondary.png" type="Texture" id=24]
 [ext_resource path="res://script/Camera.gd" type="Script" id=25]
+[ext_resource path="res://asset/button/btn_more_hov.png" type="Texture" id=26]
+[ext_resource path="res://asset/button/btn_setting_hov.png" type="Texture" id=27]
+[ext_resource path="res://asset/button/btn_backyard_hov.png" type="Texture" id=28]
+[ext_resource path="res://asset/button/btn_market_hov.png" type="Texture" id=29]
+[ext_resource path="res://asset/button/btn_home_hov.png" type="Texture" id=30]
+[ext_resource path="res://asset/button/btn_greenhouse_hov.png" type="Texture" id=31]
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -41,6 +47,62 @@ outline_color = Color( 0.180392, 0.305882, 0.470588, 1 )
 extra_spacing_bottom = -3
 extra_spacing_space = -1
 font_data = ExtResource( 17 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "wipe-In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("transition/overlay_transition:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -40, -34 ), Vector2( -40, -34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("transition/overlay_transition:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1709 ), Vector2( 812, 1709 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "wipe-Out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("transition/overlay_transition:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -40, -34 ), Vector2( 772, -34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("transition/overlay_transition:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 812, 1709 ), Vector2( 0, 1709 ) ]
+}
 
 [node name="Camera" type="Camera2D"]
 position = Vector2( 363.076, 640.723 )
@@ -88,7 +150,7 @@ margin_right = 137.0
 margin_bottom = 122.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 3 )
+texture_hover = ExtResource( 30 )
 
 [node name="btn_greenhouse" type="TextureButton" parent="bg_nav_foot/nav_foot/HBoxContainer" groups=[
 "menu_btn",
@@ -98,7 +160,7 @@ margin_right = 279.0
 margin_bottom = 122.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 12 )
+texture_hover = ExtResource( 31 )
 
 [node name="btn_yard" type="TextureButton" parent="bg_nav_foot/nav_foot/HBoxContainer" groups=[
 "menu_btn",
@@ -108,7 +170,7 @@ margin_right = 420.0
 margin_bottom = 122.0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 6 )
+texture_hover = ExtResource( 28 )
 
 [node name="btn_market" type="TextureButton" parent="bg_nav_foot/nav_foot/HBoxContainer" groups=[
 "menu_btn",
@@ -118,7 +180,7 @@ margin_right = 562.0
 margin_bottom = 122.0
 texture_normal = ExtResource( 18 )
 texture_pressed = ExtResource( 19 )
-texture_hover = ExtResource( 19 )
+texture_hover = ExtResource( 29 )
 
 [node name="btn_more" type="TextureButton" parent="bg_nav_foot/nav_foot/HBoxContainer" groups=[
 "menu_btn",
@@ -128,7 +190,7 @@ margin_right = 703.0
 margin_bottom = 122.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 9 )
+texture_hover = ExtResource( 26 )
 
 [node name="bg_nav_head" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -171,7 +233,7 @@ margin_right = 703.0
 margin_bottom = 167.0
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 11 )
-texture_hover = ExtResource( 11 )
+texture_hover = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -305,3 +367,18 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="transition" type="AnimationPlayer" parent="."]
+anims/wipe-In = SubResource( 3 )
+anims/wipe-Out = SubResource( 4 )
+
+[node name="overlay_transition" type="ColorRect" parent="transition"]
+visible = false
+margin_left = -40.0
+margin_top = -34.0
+margin_right = 772.0
+margin_bottom = 1675.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="animation_finished" from="transition" to="." method="_transition_animation_finished"]

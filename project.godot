@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 Global="*res://script/Global.gd"
 Route="*res://script/Route.gd"
+Helper="*res://script/Helper.gd"
 
 [display]
 
