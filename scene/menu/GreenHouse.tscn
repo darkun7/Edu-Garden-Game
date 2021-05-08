@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://asset/ui/market_wallpaper.png" type="Texture" id=1]
+[ext_resource path="res://asset/ui/bg_greenhouse_floor.png" type="Texture" id=1]
 [ext_resource path="res://asset/ui/ground_floor_market.png" type="Texture" id=2]
 [ext_resource path="res://scene/object/Camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://script/GreenHouse.gd" type="Script" id=5]
+[ext_resource path="res://asset/ui/bg_board.png" type="Texture" id=6]
+[ext_resource path="res://asset/object/pot_dry.png" type="Texture" id=7]
 [ext_resource path="res://asset/character/player.png" type="Texture" id=8]
+[ext_resource path="res://asset/object/pot_selected.png" type="Texture" id=9]
 [ext_resource path="res://script/Player.gd" type="Script" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -22,7 +25,6 @@ __meta__ = {
 }
 
 [node name="Wallpaper" type="TextureRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -8.0
@@ -36,16 +38,12 @@ __meta__ = {
 }
 
 [node name="bg" type="Control" parent="."]
-visible = false
-anchor_left = 0.125
-anchor_top = 0.534
 anchor_right = 5.362
-anchor_bottom = 0.534
-margin_top = -460.52
+margin_left = 90.0
+margin_top = 223.0
 margin_right = 0.359619
-margin_bottom = 5.47998
+margin_bottom = 689.0
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -56,53 +54,148 @@ anchor_bottom = 1.032
 margin_top = -480.912
 margin_right = -1.16907
 margin_bottom = 0.0879822
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Position2D" type="Position2D" parent="bg/bg_board1"]
-visible = false
-position = Vector2( 315.339, 470.412 )
+position = Vector2( 358.15, 471.601 )
 scale = Vector2( 0.434473, 0.434473 )
 
-[node name="bg_board2" type="TextureRect" parent="bg"]
-anchor_left = 0.199
-anchor_top = 1.032
-anchor_right = 0.321
-anchor_bottom = 1.032
-margin_left = 29.1171
-margin_top = -382.912
-margin_right = 26.0551
-margin_bottom = 0.0879822
+[node name="content" type="GridContainer" parent="bg/bg_board1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 30.0
+margin_right = -47.0
+margin_bottom = -108.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/vseparation = 40
+custom_constants/hseparation = 40
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pot_1" type="TextureButton" parent="bg/bg_board1/content" groups=[
+"gh_pot",
+]]
+margin_right = 149.0
+margin_bottom = 172.0
+texture_normal = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="bg/bg_board1/content/pot_1"]
+margin_left = 36.0407
+margin_top = -50.7239
+margin_right = 100.041
+margin_bottom = 13.2761
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pot_2" type="TextureButton" parent="bg/bg_board1/content" groups=[
+"gh_pot",
+]]
+margin_left = 189.0
+margin_right = 338.0
+margin_bottom = 172.0
+texture_normal = ExtResource( 7 )
+
+[node name="pot_3" type="TextureButton" parent="bg/bg_board1/content" groups=[
+"gh_pot",
+]]
+margin_left = 378.0
+margin_right = 527.0
+margin_bottom = 172.0
+texture_normal = ExtResource( 7 )
+
+[node name="pot_4" type="TextureButton" parent="bg/bg_board1/content" groups=[
+"gh_pot",
+]]
+margin_top = 212.0
+margin_right = 149.0
+margin_bottom = 384.0
+texture_normal = ExtResource( 7 )
+
+[node name="pot_5" type="TextureButton" parent="bg/bg_board1/content" groups=[
+"gh_pot",
+]]
+margin_left = 189.0
+margin_top = 212.0
+margin_right = 338.0
+margin_bottom = 384.0
+texture_normal = ExtResource( 7 )
+
+[node name="pot_6" type="TextureButton" parent="bg/bg_board1/content" groups=[
+"gh_pot",
+]]
+margin_left = 378.0
+margin_top = 212.0
+margin_right = 527.0
+margin_bottom = 384.0
+texture_normal = ExtResource( 7 )
+
+[node name="pot_7" type="TextureButton" parent="bg/bg_board1/content" groups=[
+"gh_pot",
+]]
+margin_top = 424.0
+margin_right = 149.0
+margin_bottom = 596.0
+texture_normal = ExtResource( 7 )
+
+[node name="pot_8" type="TextureButton" parent="bg/bg_board1/content" groups=[
+"gh_pot",
+]]
+margin_left = 189.0
+margin_top = 424.0
+margin_right = 338.0
+margin_bottom = 596.0
+texture_normal = ExtResource( 7 )
+
+[node name="pot_9" type="TextureButton" parent="bg/bg_board1/content" groups=[
+"gh_pot",
+]]
+margin_left = 378.0
+margin_top = 424.0
+margin_right = 527.0
+margin_bottom = 596.0
+texture_normal = ExtResource( 7 )
+
+[node name="bg_board2" type="TextureRect" parent="bg"]
+anchor_top = 1.032
+anchor_right = 0.139
+anchor_bottom = 1.032
+margin_left = 766.396
+margin_top = -480.912
+margin_right = 867.227
+margin_bottom = 253.088
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Position2D" type="Position2D" parent="bg/bg_board2"]
-visible = false
-position = Vector2( 230.76, 371.223 )
+position = Vector2( 358.15, 471.601 )
 scale = Vector2( 0.434473, 0.434473 )
 
 [node name="bg_board3" type="TextureRect" parent="bg"]
-anchor_left = 0.387
-anchor_top = 1.0
-anchor_right = 0.511
-anchor_bottom = 1.0
-margin_left = 27.0814
-margin_top = -237.56
-margin_right = 26.4775
-margin_bottom = -7.55957
-texture = ExtResource( 4 )
+anchor_top = 1.032
+anchor_right = 0.139
+anchor_bottom = 1.032
+margin_left = 1552.7
+margin_top = -480.912
+margin_right = 1653.53
+margin_bottom = 253.088
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Position2D" type="Position2D" parent="bg/bg_board3"]
-visible = false
-position = Vector2( 226.89, 231.335 )
+position = Vector2( 358.15, 471.601 )
 scale = Vector2( 0.434473, 0.434473 )
 
 [node name="bg_dummy" type="TextureRect" parent="bg"]
@@ -141,10 +234,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="mask_active" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -720.0
+margin_bottom = -1280.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pot_active" type="TextureButton" parent="mask_active" groups=[
+"gh_pot",
+]]
+margin_left = 518.0
+margin_top = 464.0
+margin_right = 665.0
+margin_bottom = 636.0
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 405.252, 693.881 )
 motion/sync_to_physics = true
 script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Camera2D" parent="Player" instance=ExtResource( 3 )]
 position = Vector2( -0.277161, -50.9131 )
@@ -152,6 +269,7 @@ current = true
 smoothing_speed = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
 position = Vector2( -0.228012, 3.32007 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -159,6 +277,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Player"]
+visible = false
 position = Vector2( -0.629944, 0.381958 )
 scale = Vector2( 0.434473, 0.434473 )
 texture = ExtResource( 8 )

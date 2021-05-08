@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://asset/button/btn_setting.png" type="Texture" id=1]
 [ext_resource path="res://asset/button/btn_home.png" type="Texture" id=2]
@@ -31,6 +31,15 @@
 [ext_resource path="res://asset/button/btn_market_hov.png" type="Texture" id=29]
 [ext_resource path="res://asset/button/btn_home_hov.png" type="Texture" id=30]
 [ext_resource path="res://asset/button/btn_greenhouse_hov.png" type="Texture" id=31]
+[ext_resource path="res://asset/ui/board.png" type="Texture" id=32]
+[ext_resource path="res://asset/button/btn_close.png" type="Texture" id=33]
+[ext_resource path="res://asset/button/btn_md.png" type="Texture" id=34]
+[ext_resource path="res://asset/button/btn_sound_off.png" type="Texture" id=35]
+[ext_resource path="res://asset/button/btn_sound_on.png" type="Texture" id=36]
+[ext_resource path="res://asset/button/btn_md_hover.png" type="Texture" id=37]
+[ext_resource path="res://asset/button/btn_sound_off_hover.png" type="Texture" id=38]
+[ext_resource path="res://asset/button/btn_sound_on_hover.png" type="Texture" id=39]
+[ext_resource path="res://asset/temp/social.png" type="Texture" id=40]
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -48,8 +57,13 @@ extra_spacing_bottom = -3
 extra_spacing_space = -1
 font_data = ExtResource( 17 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "wipe-In"
+[sub_resource type="DynamicFont" id=3]
+size = 28
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 17 )
+
+[sub_resource type="Animation" id=4]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("transition/overlay_transition:rect_position")
@@ -76,8 +90,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 1709 ), Vector2( 812, 1709 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "wipe-Out"
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("transition/overlay_transition:rect_position")
@@ -196,24 +209,23 @@ texture_hover = ExtResource( 26 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -366.0
-margin_top = -649.0
+margin_top = -852.0
 margin_right = 359.0
 margin_bottom = -482.0
 color = Color( 0.870588, 0.941176, 0.933333, 1 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="PageName" type="Label" parent="bg_nav_head"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -155.0
-margin_top = -22.5
-margin_right = 155.0
-margin_bottom = 22.5
+anchor_bottom = 1.0
+margin_left = -150.51
+margin_top = -109.438
+margin_right = 159.49
+margin_bottom = -64.4378
 custom_fonts/font = ExtResource( 22 )
 text = "%MENU_NAME%"
 align = 1
@@ -227,58 +239,14 @@ __meta__ = {
 [node name="btn_setting" type="TextureButton" parent="bg_nav_head" groups=[
 "menu_btn",
 ]]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 592.0
-margin_top = 25.0
+margin_top = -142.0
 margin_right = 703.0
-margin_bottom = 167.0
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 27 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="control" type="Control" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -310.5
-margin_top = -20.0
-margin_right = 310.5
-margin_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ctrl_left" type="TextureButton" parent="control" groups=[
-"control_btn",
-]]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -49.0
-margin_right = 60.0
-margin_bottom = 49.0
-texture_normal = ExtResource( 13 )
-texture_pressed = ExtResource( 10 )
-texture_disabled = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ctrl_right" type="TextureButton" parent="control" groups=[
-"control_btn",
-]]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -60.0
-margin_top = -49.0
-margin_bottom = 49.0
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 14 )
-texture_disabled = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -368,15 +336,225 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -310.5
+margin_top = -20.0
+margin_right = 310.5
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ctrl_left" type="TextureButton" parent="control" groups=[
+"control_btn",
+]]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -49.0
+margin_right = 60.0
+margin_bottom = 49.0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 10 )
+texture_disabled = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ctrl_right" type="TextureButton" parent="control" groups=[
+"control_btn",
+]]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -49.0
+margin_bottom = 49.0
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 14 )
+texture_disabled = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blocker" type="ColorRect" parent="control"]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.117647 )
+margin_left = -54.0
+margin_top = -468.0
+margin_right = 671.0
+margin_bottom = 647.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="window_lg" type="TextureRect" parent="control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -339.5
+margin_top = -425.0
+margin_right = 339.5
+margin_bottom = 289.0
+texture = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WindowName" type="Label" parent="control/window_lg"]
+anchor_right = 1.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 22 )
+text = "%Window_Name%"
+align = 1
+valign = 1
+max_lines_visible = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="content" type="Control" parent="control/window_lg"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -317.5
+margin_top = -265.0
+margin_right = 317.5
+margin_bottom = 337.0
+
+[node name="long_text" type="RichTextLabel" parent="control/window_lg/content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 11.0
+margin_right = -14.0
+margin_bottom = -13.0
+custom_fonts/normal_font = SubResource( 3 )
+text = "%rich_text%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="social" type="TextureRect" parent="control/window_lg/content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="setting" type="VBoxContainer" parent="control/window_lg/content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hbox" type="HBoxContainer" parent="control/window_lg/content/setting"]
+margin_right = 635.0
+margin_bottom = 121.0
+custom_constants/separation = 60
+alignment = 1
+
+[node name="sound_off" type="TextureButton" parent="control/window_lg/content/setting/hbox" groups=[
+"sub_control_btn",
+]]
+margin_left = 35.0
+margin_right = 287.0
+margin_bottom = 121.0
+texture_normal = ExtResource( 35 )
+texture_hover = ExtResource( 38 )
+
+[node name="Label" type="Label" parent="control/window_lg/content/setting/hbox/sound_off"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -7.0
+margin_top = -22.5
+margin_right = 126.0
+margin_bottom = 22.5
+custom_fonts/font = ExtResource( 22 )
+text = "Bisu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sound_on" type="TextureButton" parent="control/window_lg/content/setting/hbox" groups=[
+"sub_control_btn",
+]]
+visible = false
+margin_left = 312.0
+margin_right = 564.0
+margin_bottom = 122.0
+texture_normal = ExtResource( 36 )
+texture_hover = ExtResource( 39 )
+
+[node name="Label" type="Label" parent="control/window_lg/content/setting/hbox/sound_on"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -7.0
+margin_top = -22.5
+margin_right = 126.0
+margin_bottom = 22.5
+custom_fonts/font = ExtResource( 22 )
+text = "Aktif"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="credit" type="TextureButton" parent="control/window_lg/content/setting/hbox" groups=[
+"sub_control_btn",
+]]
+margin_left = 347.0
+margin_right = 599.0
+margin_bottom = 121.0
+texture_normal = ExtResource( 34 )
+texture_hover = ExtResource( 37 )
+
+[node name="Label2" type="Label" parent="control/window_lg/content/setting/hbox/credit"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -22.5
+margin_bottom = 22.5
+custom_fonts/font = ExtResource( 22 )
+text = "Kredit"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="window_close" type="TextureButton" parent="control/window_lg" groups=[
+"control_btn",
+]]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -80.0
+margin_top = 21.9802
+margin_right = -25.0
+margin_bottom = 75.9802
+texture_normal = ExtResource( 33 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="transition" type="AnimationPlayer" parent="."]
-anims/wipe-In = SubResource( 3 )
-anims/wipe-Out = SubResource( 4 )
+anims/wipe-In = SubResource( 4 )
+anims/wipe-Out = SubResource( 5 )
 
 [node name="overlay_transition" type="ColorRect" parent="transition"]
 visible = false
 margin_left = -40.0
 margin_top = -34.0
-margin_right = 772.0
+margin_right = -40.0
 margin_bottom = 1675.0
 __meta__ = {
 "_edit_use_anchors_": false

@@ -11,7 +11,7 @@ func _ready():
 func _page_route(scene, page):
 	var route = {
 		'main' : ['rumah','rumah kaca', 'kebun belakang', 'toko'],
-		'market' : ['biji', 'promo cepat', 'peralatan'],
+		'market' : ['benih', 'promo cepat', 'peralatan'],
 		'greenhouse': ['papan 1','papan 2','papan 3']
 	}
 	return route[scene.to_lower()][page]
@@ -27,7 +27,7 @@ func _page_action(page):
 		'toko':
 			return [ ['Berbelanja'], 'enter_market' ]
 		
-		'biji':
+		'benih':
 			return [ ['Beli', 'Jual'], 'shop_seed']
 		'promo cepat':
 			return [ ['Beli', 'Jual'], 'shop_flashsale']

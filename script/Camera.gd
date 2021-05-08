@@ -3,13 +3,14 @@ extends Camera2D
 var actionState = null setget set_action_state, get_action_state
 var pageLim = 3 setget set_page_lim, get_page_lim
 
-func _starter():
+func _starter ():
 	_action_clear()
+	_window_clear()
 	_play_transition()
 
 func _ready():
 	_starter()
-	var btnGroups = ['menu_btn','control_btn','action_btn']
+	var btnGroups = ['menu_btn','control_btn','action_btn', 'sub_control_btn']
 	for group in btnGroups:
 		for button in get_tree().get_nodes_in_group(group):
 			button.connect("pressed", self, "_trigger_signal_press", [[button,group]])
@@ -19,7 +20,7 @@ func _ready():
 	#else:
 	#	_goto_page(0)
 
-func _trigger_signal_press(data):
+func _trigger_signal_press (data):
 	var button = data[0]
 	var group = data[1]
 	var menuPath = "res://scene/"
@@ -43,8 +44,10 @@ func _trigger_signal_press(data):
 					if Global.get_scene() != 'main':
 						_change_page(menuPath+'Main.tscn', 3, 'wipe-In')
 				'btn_more':
+					_window("Sosial","social")
 					print("more")
 				'btn_setting':
+					_window("Pengaturan","setting")
 					print("setting")
 		"control_btn":
 			match button.name:
@@ -52,6 +55,22 @@ func _trigger_signal_press(data):
 					_goto_page( Global.get_page()-1 )
 				'ctrl_right':
 					_goto_page( Global.get_page()+1 )
+				'window_close':
+					_window_clear()
+		"sub_control_btn":
+			var obj_sound_0 = $control/window_lg/content/setting/hbox/sound_off
+			var obj_sound_1 = $control/window_lg/content/setting/hbox/sound_on
+			var obj_credit = $control/window_lg/content/setting/hbox/kredit
+			match button.name:
+				"sound_off":
+					obj_sound_0.hide()
+					obj_sound_1.show()
+				"sound_on":
+					obj_sound_1.hide()
+					obj_sound_0.show()
+				"credit":
+					_window_clear()
+					_window("Kredit","text", ["Pengembang: Tim Tape Soft \nH4rful\nDarkun7\nAmriZaman"])
 		"action_btn":
 			var pageName = Global.get_page_name()
 			var btnType = button.name.split('_')[1]
@@ -60,22 +79,25 @@ func _trigger_signal_press(data):
 				isPrimary = true
 			match pageName:
 				'rumah':
+					_window("Rumah","text", ["Fitur rumah belum tersedia"])
 					print("Masuk rumah")
 				'rumah kaca':
 					print('Masuk rumah kaca')
 					_change_page(menuPath+'menu/GreenHouse.tscn', 0, 'wipe-In')
 				'kebun belakang':
 					if isPrimary:
+						_window("Kebun Saya","text", ["Fitur kebun belum tersedia"])
 						print("Masuk Kebun Saya")
 					else:
-						print("Masuk Kebun Tetangga")
+						_window("Kebun Teman","text", ["Fitur kebun belum tersedia"])
+						print("Masuk Kebun Teman")
 				'toko':
 					print('Masuk Toko')
 					_change_page(menuPath+'menu/Market.tscn', 0, 'wipe-In')
 					
 	pass
 
-func _goto_page(pageNum):
+func _goto_page (pageNum):
 	var pageName = Route._page_route(Global.get_scene(),pageNum)
 	var action = Route._page_action(pageName)
 	#check page limit:
@@ -95,10 +117,10 @@ func _goto_page(pageNum):
 	_action_button(action[0],action[1])
 	return Global.get_page()
 
-func _set_page_name(name):
+func _set_page_name (name):
 	$bg_nav_head/PageName.text = name
 
-func _action_button(text, state = "no_action"):
+func _action_button (text, state = "no_action"):
 	set_action_state(state)
 	$action/btn_primary.hide()
 	$action/btn_secondary.hide()
@@ -110,21 +132,53 @@ func _action_button(text, state = "no_action"):
 			$action/btn_secondary/text.text = text[1]
 	return get_action_state()
 
-func _action_clear():
+func _window (label, type, args = [], clearAction = true):
+	var obj_blocker  = $control/blocker
+	obj_blocker.hide()
+	var obj_longText = $control/window_lg/content/long_text
+	var obj_setting  = $control/window_lg/content/setting
+	var obj_social   = $control/window_lg/content/social
+	if clearAction:
+		$action/btn_primary.hide()
+		$action/btn_secondary.hide()
+		obj_blocker.show()
+	$control/window_lg.show()
+	$control/window_lg/WindowName.text = label
+	var objType = [obj_longText, obj_setting, obj_social]
+	for opt in objType:
+		get_node("control/window_lg/content/"+opt.name).hide()
+	match type:
+		"text":
+			obj_longText.show()
+			obj_longText.bbcode_text = args[0]
+		"setting":
+			obj_setting.show()
+		"social":
+			obj_social.show()
+	pass
+
+func _action_clear ():
 	$action/btn_primary.hide()
 	$action/btn_secondary.hide()
 	set_action_state(null)
-
+	
+func _window_clear ():
+	$control/window_lg.hide()
+	$control/window_lg/content/long_text.hide()
+	$control/blocker.hide()
+	#To Refresh Action
+	if(Global.get_page() != null):
+		_goto_page( Global.get_page() )
 
 ### Transition ###
-func _play_transition():
+func _play_transition ():
 	if Global.get_change_scene().has('animation'):
 		var animType = Global.get_change_scene()['animation']
 		$transition/overlay_transition.show()
 		$transition.play(animType)
 		print("Play ",animType)
 
-func _transition_animation_finished(anim_name):
+func _transition_animation_finished (anim_name):
 	var animation = anim_name.split('-')[0]
 	var type = anim_name.split('-')[1]
 	if type == "In":
@@ -138,7 +192,7 @@ func _transition_animation_finished(anim_name):
 		get_tree().change_scene( Global.get_change_scene()['path'] )
 		pass
 
-func _change_page(scenePath, page, animation):
+func _change_page (scenePath, page, animation):
 	Global.append_change_scene('path',scenePath)
 	Global.append_change_scene('page',page)
 	Global.append_change_scene('animation',animation)

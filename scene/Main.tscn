@@ -25,9 +25,10 @@ __meta__ = {
 }
 
 [node name="Sky" type="TextureRect" parent="."]
+anchor_left = -0.011
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -8.0
+margin_left = -0.0799994
 margin_right = 3286.0
 texture = ExtResource( 1 )
 expand = true
@@ -38,13 +39,11 @@ __meta__ = {
 }
 
 [node name="bg" type="Control" parent="."]
-anchor_left = 0.125
-anchor_top = 0.534
 anchor_right = 5.362
-anchor_bottom = 0.534
-margin_top = -460.52
+margin_left = 90.0
+margin_top = 223.0
 margin_right = 0.359619
-margin_bottom = 5.47998
+margin_bottom = 689.0
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -126,13 +125,12 @@ position = Vector2( 249.336, 471.998 )
 scale = Vector2( 0.434473, 0.434473 )
 
 [node name="Ground" type="TextureRect" parent="."]
-anchor_top = 0.477
+anchor_left = -0.011
 anchor_right = 5.581
-anchor_bottom = 0.477
-margin_left = -8.0
-margin_top = 0.440002
+margin_left = -0.0799994
+margin_top = 611.0
 margin_right = -0.319824
-margin_bottom = 671.44
+margin_bottom = 1282.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2
@@ -148,6 +146,7 @@ script = ExtResource( 10 )
 
 [node name="Camera2D" parent="Player" instance=ExtResource( 3 )]
 position = Vector2( -0.277161, -50.9131 )
+z_index = 1000
 current = true
 smoothing_speed = 0.0
 

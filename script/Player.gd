@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var speed = Vector2(64,64)
+export var customSpeed = 1
 
 func _ready():
 	pass # Replace with function body.
@@ -25,7 +26,7 @@ func _process(delta):
 	var destination = self.position
 	if( typeof(objPos) == TYPE_VECTOR2 ):
 		var velo = (objPos.x- destination.x)*1;
-		position.x += velo*delta
+		position.x += velo*delta *customSpeed
 		#move_and_slide(repos_velo)
 	#	repos.x = objPos.x- destination.x
 	#	repos_velo.x = repos.x * SMOOTH_SPEED * delta
