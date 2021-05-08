@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://asset/ui/bg_greenhouse_floor.png" type="Texture" id=1]
 [ext_resource path="res://asset/ui/ground_floor_market.png" type="Texture" id=2]
@@ -10,6 +10,84 @@
 [ext_resource path="res://asset/character/player.png" type="Texture" id=8]
 [ext_resource path="res://asset/object/pot_selected.png" type="Texture" id=9]
 [ext_resource path="res://script/Player.gd" type="Script" id=10]
+[ext_resource path="res://asset/button/btn_tool_close.png" type="Texture" id=11]
+[ext_resource path="res://asset/button/btn_tool_open.png" type="Texture" id=12]
+[ext_resource path="res://asset/button/btn_tool_gembor.png" type="Texture" id=13]
+[ext_resource path="res://asset/button/btn_tool_seed.png" type="Texture" id=14]
+[ext_resource path="res://asset/button/btn_tool_nutrisi.png" type="Texture" id=15]
+[ext_resource path="res://asset/font/VarelaRound-Regular.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://asset/object/return_point.png" type="Texture" id=17]
+[ext_resource path="res://asset/button/btn_tool_detail.png" type="Texture" id=18]
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 16 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.760784, 0.854902, 0.886275, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.584314, 0.85098, 0.145098, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id=7]
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 4 )
+ProgressBar/styles/bg = SubResource( 5 )
+ProgressBar/styles/fg = SubResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.760784, 0.854902, 0.886275, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.211765, 0.894118, 0.921569, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id=10]
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 4 )
+ProgressBar/styles/bg = SubResource( 8 )
+ProgressBar/styles/fg = SubResource( 9 )
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 60.8601
@@ -21,7 +99,8 @@ anchor_bottom = 1.0
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true,
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [  ]
 }
 
 [node name="Wallpaper" type="TextureRect" parent="."]
@@ -39,11 +118,12 @@ __meta__ = {
 
 [node name="bg" type="Control" parent="."]
 anchor_right = 5.362
-margin_left = 90.0
-margin_top = 223.0
-margin_right = 0.359619
-margin_bottom = 689.0
+margin_left = 75.881
+margin_top = 368.141
+margin_right = -13.7593
+margin_bottom = 834.141
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -85,16 +165,6 @@ __meta__ = {
 margin_right = 149.0
 margin_bottom = 172.0
 texture_normal = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="bg/bg_board1/content/pot_1"]
-margin_left = 36.0407
-margin_top = -50.7239
-margin_right = 100.041
-margin_bottom = 13.2761
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="pot_2" type="TextureButton" parent="bg/bg_board1/content" groups=[
 "gh_pot",
@@ -203,10 +273,10 @@ anchor_left = 0.575
 anchor_top = 1.0
 anchor_right = 0.703
 anchor_bottom = 1.0
-margin_left = 49.7832
-margin_top = -466.782
-margin_right = 47.0955
-margin_bottom = 18.2182
+margin_left = 85.4189
+margin_top = -463.218
+margin_right = 82.7312
+margin_bottom = 21.7818
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -246,6 +316,7 @@ __meta__ = {
 [node name="pot_active" type="TextureButton" parent="mask_active" groups=[
 "gh_pot",
 ]]
+visible = false
 margin_left = 518.0
 margin_top = 464.0
 margin_right = 665.0
@@ -255,12 +326,154 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="hand" type="Node2D" parent="."]
+z_as_relative = false
+
+[node name="return" type="TextureRect" parent="hand"]
+visible = false
+margin_left = 212.236
+margin_top = 1140.36
+margin_right = 262.236
+margin_bottom = 1183.36
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="memo" type="Label" parent="hand/return"]
+margin_left = 59.6902
+margin_top = 2.67273
+margin_right = 385.69
+margin_bottom = 47.6727
+custom_fonts/font = SubResource( 3 )
+text = "tekan untuk mengembalikan"
+
+[node name="tool_box" type="TextureButton" parent="hand" groups=[
+"tool_btn",
+]]
+anchor_left = 0.05
+anchor_right = 0.05
+margin_left = 88.4509
+margin_top = 1095.5
+margin_right = 201.451
+margin_bottom = 1211.5
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="contain" type="HBoxContainer" parent="hand"]
+visible = false
+margin_left = 218.619
+margin_top = 1098.72
+margin_right = 723.619
+margin_bottom = 1217.72
+custom_constants/separation = 16
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="tool_seed" type="TextureButton" parent="hand/contain" groups=[
+"tool_btn",
+]]
+margin_right = 113.0
+margin_bottom = 119.0
+texture_normal = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tool_gembor" type="TextureButton" parent="hand/contain" groups=[
+"tool_btn",
+]]
+margin_left = 129.0
+margin_right = 242.0
+margin_bottom = 119.0
+texture_normal = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tool_nutrisi" type="TextureButton" parent="hand/contain" groups=[
+"tool_btn",
+]]
+margin_left = 258.0
+margin_right = 371.0
+margin_bottom = 119.0
+texture_normal = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hand_action" type="ColorRect" parent="hand"]
+modulate = Color( 0, 0, 0, 0.596078 )
+margin_top = 289.0
+margin_right = 750.0
+margin_bottom = 354.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="action_label" type="Label" parent="hand"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 289.0
+margin_right = 750.0
+margin_bottom = 354.0
+custom_fonts/font = SubResource( 2 )
+text = "%state%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="plant_info" type="Node2D" parent="."]
+visible = false
+
+[node name="tool_detail" type="TextureButton" parent="plant_info" groups=[
+"tool_btn",
+]]
+margin_left = 219.163
+margin_top = 1099.45
+margin_right = 332.163
+margin_bottom = 1214.45
+texture_normal = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="plant_health" type="ProgressBar" parent="plant_info"]
+margin_left = 352.0
+margin_top = 1096.74
+margin_right = 714.0
+margin_bottom = 1151.74
+theme = SubResource( 7 )
+value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="plant_water" type="ProgressBar" parent="plant_info"]
+margin_left = 352.0
+margin_top = 1157.74
+margin_right = 714.0
+margin_bottom = 1212.74
+theme = SubResource( 10 )
+value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 405.252, 693.881 )
+position = Vector2( 389.206, 820.36 )
 motion/sync_to_physics = true
 script = ExtResource( 10 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Camera2D" parent="Player" instance=ExtResource( 3 )]

@@ -14,10 +14,15 @@ func _page_route(scene, page):
 		'market' : ['benih', 'promo cepat', 'peralatan'],
 		'greenhouse': ['papan 1','papan 2','papan 3']
 	}
-	return route[scene.to_lower()][page]
+	if page >= len(route[scene.to_lower()]):
+		return 'Memuat...'
+	else:
+		return route[scene.to_lower()][page]
 
 func _page_action(page):
 	match page:
+		'Memuat...': #aslinya ini no-page
+			return [ [''],'' ]
 		'rumah':
 			return [ ['Masuk'], 'enter_home' ]
 		'rumah kaca':

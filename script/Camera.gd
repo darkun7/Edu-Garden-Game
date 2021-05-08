@@ -1,5 +1,8 @@
 extends Camera2D
 
+export var showCurrency = false
+export var showEXP = false
+
 var actionState = null setget set_action_state, get_action_state
 var pageLim = 3 setget set_page_lim, get_page_lim
 
@@ -20,6 +23,12 @@ func _ready():
 	#else:
 	#	_goto_page(0)
 
+func refresh():
+	if(!showCurrency):
+		$bg_nav_head/player_info/mineral.hide()
+	if(!showEXP):
+		$bg_nav_head/player_info/exp.hide()
+
 func _trigger_signal_press (data):
 	var button = data[0]
 	var group = data[1]
@@ -28,21 +37,21 @@ func _trigger_signal_press (data):
 		"menu_btn":
 			match button.name:
 				'btn_home':
-					_goto_page( Global.set_page(0) )
 					if Global.get_scene() != 'main':
 						_change_page(menuPath+'Main.tscn', 0, 'wipe-In')
+					_goto_page( Global.set_page(0) )
 				'btn_greenhouse':
-					_goto_page( Global.set_page(1) )
 					if Global.get_scene() != 'main':
 						_change_page(menuPath+'Main.tscn', 1, 'wipe-In')
+					_goto_page( Global.set_page(1) )
 				'btn_yard':
-					_goto_page( Global.set_page(2) )
 					if Global.get_scene() != 'main':
 						_change_page(menuPath+'Main.tscn', 2, 'wipe-In')
+					_goto_page( Global.set_page(2) )
 				'btn_market':
-					_goto_page( Global.set_page(3) )
 					if Global.get_scene() != 'main':
 						_change_page(menuPath+'Main.tscn', 3, 'wipe-In')
+					_goto_page( Global.set_page(3) )
 				'btn_more':
 					_window("Sosial","social")
 					print("more")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://asset/button/btn_setting.png" type="Texture" id=1]
 [ext_resource path="res://asset/button/btn_home.png" type="Texture" id=2]
@@ -40,6 +40,20 @@
 [ext_resource path="res://asset/button/btn_sound_off_hover.png" type="Texture" id=38]
 [ext_resource path="res://asset/button/btn_sound_on_hover.png" type="Texture" id=39]
 [ext_resource path="res://asset/temp/social.png" type="Texture" id=40]
+[ext_resource path="res://asset/star.png" type="Texture" id=41]
+[ext_resource path="res://asset/currency_mineral.png" type="Texture" id=42]
+
+[sub_resource type="DynamicFont" id=6]
+size = 26
+outline_size = 3
+outline_color = Color( 0.376471, 0.607843, 0.117647, 1 )
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 26
+outline_size = 3
+outline_color = Color( 0.113725, 0.188235, 0.341176, 1 )
+font_data = ExtResource( 17 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -209,7 +223,7 @@ texture_hover = ExtResource( 26 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -366.0
-margin_top = -852.0
+margin_top = -979.0
 margin_right = 359.0
 margin_bottom = -482.0
 color = Color( 0.870588, 0.941176, 0.933333, 1 )
@@ -247,6 +261,54 @@ margin_right = 703.0
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_info" type="HBoxContainer" parent="bg_nav_head"]
+anchor_top = 1.0
+anchor_right = 0.004
+anchor_bottom = 1.0
+margin_left = 23.0
+margin_top = 21.0
+margin_right = 290.1
+margin_bottom = 58.0
+custom_constants/separation = 200
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mineral" type="TextureButton" parent="bg_nav_head/player_info"]
+margin_right = 31.0
+margin_bottom = 37.0
+texture_normal = ExtResource( 42 )
+
+[node name="amount" type="Label" parent="bg_nav_head/player_info/mineral"]
+margin_left = 35.0
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 6 )
+text = "%amount"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exp" type="TextureButton" parent="bg_nav_head/player_info"]
+margin_left = 231.0
+margin_right = 270.0
+margin_bottom = 37.0
+texture_normal = ExtResource( 41 )
+
+[node name="amount" type="Label" parent="bg_nav_head/player_info/exp"]
+anchor_left = -6.126
+anchor_right = -6.126
+margin_left = 281.914
+margin_top = 5.0
+margin_right = 392.914
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 7 )
+text = "%amount"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -393,6 +455,7 @@ __meta__ = {
 }
 
 [node name="window_lg" type="TextureRect" parent="control"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
